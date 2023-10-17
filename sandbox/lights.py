@@ -1,7 +1,8 @@
 from OpenGL.GL import *
 from OpenGL.GLUT import *
 from OpenGL.GLU import *
-
+from PIL import Image
+from texture import load_texture
 
 def reshape(width, height):
     glViewport(0, 0, width, height)
@@ -33,6 +34,18 @@ def draw_matte_cone():
     glMaterialfv(GL_FRONT, GL_DIFFUSE, [1.0, 0.2, 0.8, 1.0])  # Серый материал
     glTranslatef(200, -50, 0)
     glRotatef(-90, 1, 0, 0)
+
+    # #==========================================
+    # # Setting texture
+    # texture_id = load_texture("texture.png")
+    # glEnable(GL_TEXTURE_2D)
+    # glEnable(GL_TEXTURE_GEN_S)
+    # glEnable(GL_TEXTURE_GEN_T)
+    # glTexGeni(GL_S, GL_TEXTURE_GEN_MODE, GL_SPHERE_MAP)
+    # glTexGeni(GL_T, GL_TEXTURE_GEN_MODE, GL_SPHERE_MAP)
+    # glBindTexture(GL_TEXTURE_2D, texture_id)
+    # #==========================================
+
     glutSolidCone(50, 100, 20, 10)
 
 
